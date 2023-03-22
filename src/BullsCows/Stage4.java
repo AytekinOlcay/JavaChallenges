@@ -72,31 +72,29 @@ class Stage4 {
         System.out.println();
     }
 
-    void letsStart() {
+
+
+    public static void main(String[] args) {
+        Stage4 stage4 = new Stage4();
         String guess;
-        this.secretLength = this.getLength();
-        while (this.secretLength > 10) {
+        stage4.secretLength = stage4.getLength();
+        while (stage4.secretLength > 10) {
             System.out.printf("Error: can't generate a secret number with a length of %d" +
-                    " because there aren't enough unique digits.\n", this.secretLength);
-            this.secretLength = this.getLength();
+                    " because there aren't enough unique digits.\n", stage4.secretLength);
+            stage4.secretLength = stage4.getLength();
         }
 
-        this.secretCode = this.createSecret();
+        stage4.secretCode = stage4.createSecret();
 
         System.out.println("Okay, let's start a game!");
 
         do {
-            System.out.printf("Turn %d:\n", this.turn);
-            guess = this.getUserGuess();
-            this.calculate(guess);
-            this.turn += 1;
-        } while (!guess.equals(this.secretCode));
+            System.out.printf("Turn %d:\n", stage4.turn);
+            guess = stage4.getUserGuess();
+            stage4.calculate(guess);
+            stage4.turn += 1;
+        } while (!guess.equals(stage4.secretCode));
 
         System.out.println("Congratulations! You guessed the secret code.");
-    }
-
-    public static void main(String[] args) {
-        Stage4 stage4 = new Stage4();
-        stage4.letsStart();
     }
 }
